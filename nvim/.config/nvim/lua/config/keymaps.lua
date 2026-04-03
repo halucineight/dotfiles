@@ -1,0 +1,6 @@
+vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
+vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFile<cr>", { desc = "Find current file in explorer" })
+vim.keymap.set("n", "<leader>eo", "<cmd>NvimTreeFocus<cr>", { desc = "Focus file explorer" })
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Open Neogit" })
+vim.keymap.set("n", "<leader>gc", "<cmd>NeogitCommit<cr>", { desc = "Open Neogit commit view" })
