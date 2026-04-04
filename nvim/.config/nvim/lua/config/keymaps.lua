@@ -27,6 +27,11 @@ vim.keymap.set("n", "<leader>hb", function()
   require("gitsigns").blame_line({ full = true })
 end, { desc = "Blame line" })
 
+-- LSP
+vim.keymap.set("n", "<leader>lf", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format code" })
+
 -- Oil 
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>oo", "<cmd>Oil<cr>", { desc = "Oil: Open parent directory" })
