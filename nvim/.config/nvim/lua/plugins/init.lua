@@ -34,6 +34,20 @@ return {
     version = "^1.0.0",
   },
   {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("telescope").setup({
+        defaults = {
+          initial_mode = "normal",
+        },
+      })
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
