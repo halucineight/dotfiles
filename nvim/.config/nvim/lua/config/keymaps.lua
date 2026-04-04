@@ -3,6 +3,20 @@ vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle fi
 vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFile<cr>", { desc = "Find current file in explorer" })
 vim.keymap.set("n", "<leader>eo", "<cmd>NvimTreeFocus<cr>", { desc = "Focus file explorer" })
 
+-- Splits
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Equalize split sizes" })
+vim.keymap.set("n", "<leader>sx", "<cmd>close<cr>", { desc = "Close current split" })
+vim.keymap.set("n", "zl", "<cmd>vertical resize +5<cr>", { desc = "Increase split width" })
+vim.keymap.set("n", "zh", "<cmd>vertical resize -5<cr>", { desc = "Decrease split width" })
+vim.keymap.set("n", "zk", "<cmd>resize +2<cr>", { desc = "Increase split height" })
+vim.keymap.set("n", "zj", "<cmd>resize -2<cr>", { desc = "Decrease split height" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper split" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
+
 -- Neogit
 vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Open Neogit" })
 vim.keymap.set("n", "<leader>gc", "<cmd>NeogitCommit<cr>", { desc = "Open Neogit commit view" })
