@@ -54,4 +54,19 @@ return {
       require("nvim-tree").setup({})
     end,
   },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
+    },
+  {
+    "mason-org/mason.nvim",
+    config = function()
+      require("mason").setup({})
+    end,
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+  },
 }
