@@ -7,6 +7,26 @@ vim.keymap.set("n", "<leader>eo", "<cmd>NvimTreeFocus<cr>", { desc = "Focus file
 vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Open Neogit" })
 vim.keymap.set("n", "<leader>gc", "<cmd>NeogitCommit<cr>", { desc = "Open Neogit commit view" })
 
+-- Gitsigns
+vim.keymap.set("n", "]h", function()
+  require("gitsigns").next_hunk()
+end, { desc = "Next git hunk" })
+vim.keymap.set("n", "[h", function()
+  require("gitsigns").prev_hunk()
+end, { desc = "Previous git hunk" })
+vim.keymap.set("n", "<leader>hs", function()
+  require("gitsigns").stage_hunk()
+end, { desc = "Stage hunk" })
+vim.keymap.set("n", "<leader>hr", function()
+  require("gitsigns").reset_hunk()
+end, { desc = "Reset hunk" })
+vim.keymap.set("n", "<leader>hp", function()
+  require("gitsigns").preview_hunk()
+end, { desc = "Preview hunk" })
+vim.keymap.set("n", "<leader>hb", function()
+  require("gitsigns").blame_line({ full = true })
+end, { desc = "Blame line" })
+
 -- Oil 
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>oo", "<cmd>Oil<cr>", { desc = "Oil: Open parent directory" })
