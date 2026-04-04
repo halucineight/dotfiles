@@ -27,6 +27,14 @@ vim.keymap.set("n", "<leader>hb", function()
   require("gitsigns").blame_line({ full = true })
 end, { desc = "Blame line" })
 
+-- Buffers
+vim.keymap.set("n", "<leader>bb", "<cmd>BufferPick<cr>", { desc = "Pick buffer" })
+vim.keymap.set("n", "<leader>bc", "<cmd>BufferClose<cr>", { desc = "Close current buffer" })
+vim.keymap.set("n", "<leader>bn", "<cmd>BufferNext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", "<cmd>BufferPrevious<cr>", { desc = "Previous buffer" })
+vim.keymap.set("n", "L", "<cmd>BufferNext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "H", "<cmd>BufferPrevious<cr>", { desc = "Previous buffer" })
+
 -- LSP
 vim.keymap.set("n", "<leader>lf", function()
   vim.lsp.buf.format({ async = true })
