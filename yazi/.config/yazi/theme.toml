@@ -3,13 +3,7 @@ dark = "gruvbox-dark"
 light = "gruvbox-dark"
 
 [filetype]
-prepend_rules = [
-  { url = "*/", fg = "#b8bb26" },
+rules = [
   { url = "*", fg = "#ebdbb2" },
-]
-
-[icon]
-prepend_conds = [
-  { if = "dir", fg = "#b8bb26" },
-  { if = "!dir", fg = "#a89984" },
+  { url = "*/", fg = "#b8bb26" },
 ]
