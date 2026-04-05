@@ -215,6 +215,8 @@ return {
 
       local lua_ls = preferred_executable("lua-language-server")
       local stylua = preferred_executable("stylua")
+      local qmlls = preferred_executable("qmlls")
+      local qmlformat = preferred_executable("qmlformat")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       require("mason-lspconfig").setup({
@@ -229,6 +231,20 @@ return {
       })
 
       vim.lsp.enable("lua_ls")
+
+      if qmlls then
+        vim.lsp.config("qmlls", {
+          cmd = { qmlls },
+          filetypes = { "qml", "qmljs" },
+          capabilities = capabilities,
+          settings = qmlformat and {
+            qml = {
+              formatCommand = { qmlformat },
+            },
+          } or nil,
+        })
+        vim.lsp.enable("qmlls")
+      end
 
       if stylua then
         vim.lsp.config("stylua", {
