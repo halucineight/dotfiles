@@ -143,10 +143,10 @@ return {
         install_dir = vim.fn.stdpath("data") .. "/site",
       })
 
-      require("nvim-treesitter").install({ "lua", "vim", "vimdoc", "nix" })
+      require("nvim-treesitter").install({ "lua", "vim", "vimdoc", "nix", "elixir", "eex", "heex" })
 
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "lua", "vim", "help", "nix" },
+        pattern = { "lua", "vim", "help", "nix", "elixir", "eelixir", "eex", "heex", "surface" },
         callback = function()
           vim.treesitter.start()
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
@@ -215,6 +215,7 @@ return {
 
       local lua_ls = preferred_executable("lua-language-server")
       local stylua = preferred_executable("stylua")
+      local elixirls = preferred_executable("elixir-ls")
       local qmlls = preferred_executable("qmlls")
       local qmlformat = preferred_executable("qmlformat")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -251,6 +252,22 @@ return {
           cmd = { stylua, "--lsp" },
         })
         vim.lsp.enable("stylua")
+      end
+
+      if elixirls then
+        vim.lsp.config("elixirls", {
+          cmd = { elixirls },
+          capabilities = capabilities,
+          settings = {
+            elixirLS = {
+              dialyzerEnabled = true,
+              fetchDeps = false,
+              enableTestLenses = false,
+              suggestSpecs = true,
+            },
+          },
+        })
+        vim.lsp.enable("elixirls")
       end
     end,
   },
