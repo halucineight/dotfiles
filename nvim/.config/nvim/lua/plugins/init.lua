@@ -181,121 +181,57 @@ return {
       "mason-org/mason-lspconfig.nvim",
     },
     config = function()
-      local function is_executable(path)
-        return path ~= nil and vim.fn.executable(path) == 1
-      end
-
-      local function path_exists(path)
-        return path ~= nil and vim.uv.fs_stat(path) ~= nil
-      end
-
-      local function is_mason_bin(path)
-        return path ~= nil and path:match("/%.local/share/nvim/mason/bin/")
-      end
-
-      local function first_non_mason_path_binary(bin)
-        for dir in string.gmatch(vim.env.PATH or "", "([^:]+)") do
-          local path = dir .. "/" .. bin
-
-          if not is_mason_bin(path) and is_executable(path) then
-            return path
-          end
-        end
-      end
-
-      local function preferred_executable(...)
-        for _, bin in ipairs({ ... }) do
-          local path = first_non_mason_path_binary(bin)
-
-          if path then
-            return path
-          end
-
-          path = vim.fn.exepath(bin)
-
-          if path ~= "" then
-            return path
-          end
-        end
-      end
-
-      local lua_ls = preferred_executable("lua-language-server")
-      local stylua = preferred_executable("stylua")
-      local elixirls = preferred_executable("elixir-ls")
-      local nixd = preferred_executable("nixd")
-      local nixfmt = preferred_executable("nixfmt", "nixfmt-rfc-style")
-      local qmlls = preferred_executable("qmlls")
-      local qmlformat = preferred_executable("qmlformat")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      require("mason-lspconfig").setup({
-        ensure_installed = vim.tbl_filter(function(server)
-          return server ~= nil
-        end, {
-          lua_ls and nil or "lua_ls",
-        }),
-      })
+      require("mason-lspconfig").setup({})
 
-      vim.lsp.config("lua_ls", lua_ls and {
-        cmd = { lua_ls },
-        capabilities = capabilities,
-      } or {
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
       })
 
       vim.lsp.enable("lua_ls")
 
-      if qmlls then
-        vim.lsp.config("qmlls", {
-          cmd = { qmlls },
-          filetypes = { "qml", "qmljs" },
-          capabilities = capabilities,
-          settings = qmlformat and {
-            qml = {
-              formatCommand = { qmlformat },
-            },
-          } or nil,
-        })
-        vim.lsp.enable("qmlls")
-      end
+      vim.lsp.config("qmlls", {
+        filetypes = { "qml", "qmljs" },
+        capabilities = capabilities,
+        settings = {
+          qml = {
+            formatCommand = { "qmlformat" },
+          },
+        },
+      })
+      vim.lsp.enable("qmlls")
 
-      if stylua then
-        vim.lsp.config("stylua", {
-          cmd = { stylua, "--lsp" },
-        })
-        vim.lsp.enable("stylua")
-      end
+      vim.lsp.config("stylua", {
+        cmd = { "stylua", "--lsp" },
+      })
+      vim.lsp.enable("stylua")
 
-      if elixirls then
-        vim.lsp.config("elixirls", {
-          cmd = { elixirls },
-          capabilities = capabilities,
-          settings = {
-            elixirLS = {
-              dialyzerEnabled = true,
-              fetchDeps = false,
-              enableTestLenses = false,
-              suggestSpecs = true,
+      vim.lsp.config("elixirls", {
+        cmd = { "elixir-ls" },
+        capabilities = capabilities,
+        settings = {
+          elixirLS = {
+            dialyzerEnabled = true,
+            fetchDeps = false,
+            enableTestLenses = false,
+            suggestSpecs = true,
+          },
+        },
+      })
+      vim.lsp.enable("elixirls")
+
+      vim.lsp.config("nixd", {
+        capabilities = capabilities,
+        settings = {
+          nixd = {
+            formatting = {
+              command = { "nixfmt" },
             },
           },
-        })
-        vim.lsp.enable("elixirls")
-      end
-
-      if nixd then
-        vim.lsp.config("nixd", {
-          cmd = { nixd },
-          capabilities = capabilities,
-          settings = {
-            nixd = {
-              formatting = nixfmt and {
-                command = { nixfmt },
-              } or nil,
-            },
-          },
-        })
-        vim.lsp.enable("nixd")
-      end
+        },
+      })
+      vim.lsp.enable("nixd")
     end,
   },
   {
