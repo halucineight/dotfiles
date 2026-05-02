@@ -166,6 +166,18 @@ return {
     end,
   },
   {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+      require("toggleterm").setup({
+        direction = "float",
+        float_opts = {
+          border = "curved",
+        },
+      })
+    end,
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
       "nvim-tree/nvim-web-devicons",

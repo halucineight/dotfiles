@@ -72,6 +72,10 @@ vim.keymap.set("n", "<leader>or", "<cmd>Oil /<cr>", { desc = "Oil: Open root dir
 vim.keymap.set("n", "<M-o>", "<cmd>Oil<cr>", { desc = "Alt+o: Open Oil" })
 vim.keymap.set("n", "<M-O>", "<cmd>Oil --float<cr>", { desc = "Alt+O: Open Oil in float" })
 
+-- Terminal
+vim.keymap.set({ "n", "t" }, "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
 -- These will only kick in when an Oil buffer is open
 
 vim.api.nvim_create_autocmd("FileType", {
