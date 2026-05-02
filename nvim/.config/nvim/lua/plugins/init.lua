@@ -232,6 +232,19 @@ return {
         },
       })
       vim.lsp.enable("nixd")
+      
+      vim.lsp.config("rust_analyzer", {
+        capabilities = capabilities,
+        settings = {
+          ["rust-analyzer"] = {
+            rustfmt = {
+              overrideCommand = { "rustfmt" },
+            },
+          },
+        },
+      })
+      vim.lsp.enable("rust_analyzer")
+
     end,
   },
   {
