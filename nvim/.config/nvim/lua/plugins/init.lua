@@ -170,7 +170,7 @@ return {
     version = "*",
     config = function()
       require("toggleterm").setup({
-        direction = "float",
+        direction = "horizontal",
         float_opts = {
           border = "curved",
         },
