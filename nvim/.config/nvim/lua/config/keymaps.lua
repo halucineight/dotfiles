@@ -53,6 +53,8 @@ vim.keymap.set("n", "H", "<cmd>BufferPrevious<cr>", { desc = "Previous buffer" }
 vim.keymap.set("n", "<leader>lf", function()
   vim.lsp.buf.format({ async = true })
 end, { desc = "Format code" })
+
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic under cursor" })
 vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 
