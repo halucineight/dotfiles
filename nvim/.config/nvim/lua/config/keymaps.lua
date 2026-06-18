@@ -23,22 +23,22 @@ vim.keymap.set("n", "<leader>gc", "<cmd>NeogitCommit<cr>", { desc = "Open Neogit
 
 -- Gitsigns
 vim.keymap.set("n", "]h", function()
-  require("gitsigns").next_hunk()
+	require("gitsigns").next_hunk()
 end, { desc = "Next git hunk" })
 vim.keymap.set("n", "[h", function()
-  require("gitsigns").prev_hunk()
+	require("gitsigns").prev_hunk()
 end, { desc = "Previous git hunk" })
 vim.keymap.set("n", "<leader>hs", function()
-  require("gitsigns").stage_hunk()
+	require("gitsigns").stage_hunk()
 end, { desc = "Stage hunk" })
 vim.keymap.set("n", "<leader>hr", function()
-  require("gitsigns").reset_hunk()
+	require("gitsigns").reset_hunk()
 end, { desc = "Reset hunk" })
 vim.keymap.set("n", "<leader>hp", function()
-  require("gitsigns").preview_hunk()
+	require("gitsigns").preview_hunk()
 end, { desc = "Preview hunk" })
 vim.keymap.set("n", "<leader>hb", function()
-  require("gitsigns").blame_line({ full = true })
+	require("gitsigns").blame_line({ full = true })
 end, { desc = "Blame line" })
 
 -- Buffers
@@ -51,7 +51,7 @@ vim.keymap.set("n", "H", "<cmd>BufferPrevious<cr>", { desc = "Previous buffer" }
 
 -- LSP
 vim.keymap.set("n", "<leader>lf", function()
-  vim.lsp.buf.format({ async = true })
+	vim.lsp.buf.format({ async = true })
 end, { desc = "Format code" })
 
 vim.keymap.set("n", "<C-e>", vim.diagnostic.open_float, { desc = "Show diagnostic under cursor" })
@@ -59,12 +59,12 @@ vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Next diagn
 vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
-      buffer = ev.buf,
-      desc = "Go to definition",
-    })
-  end,
+	callback = function(ev)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+			buffer = ev.buf,
+			desc = "Go to definition",
+		})
+	end,
 })
 
 -- Telescope
@@ -73,7 +73,7 @@ vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Recen
 vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Search in files" })
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
 
--- Oil 
+-- Oil
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>oo", "<cmd>Oil<cr>", { desc = "Oil: Open parent directory" })
 vim.keymap.set("n", "<leader>of", "<cmd>Oil --float<cr>", { desc = "Oil: Open parent directory in floating window" })
@@ -90,34 +90,36 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 -- These will only kick in when an Oil buffer is open
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "oil",
-  callback = function()
-    vim.keymap.set("n", "<CR>", function()
-      require("oil").select()
-    end, { buffer = true, desc = "Oil: Enter directory/open file" })
+	pattern = "oil",
+	callback = function()
+		vim.keymap.set("n", "<CR>", function()
+			require("oil").select()
+		end, { buffer = true, desc = "Oil: Enter directory/open file" })
 
-    vim.keymap.set("n", "g.", function()
-      require("oil").toggle_hidden()
-    end, { buffer = true, desc = "Oil: Toggle hidden files" })
+		vim.keymap.set("n", "g.", function()
+			require("oil").toggle_hidden()
+		end, { buffer = true, desc = "Oil: Toggle hidden files" })
 
-    vim.keymap.set("n", "gx", function()
-      require("oil").open_external()
-    end, { buffer = true, desc = "Oil: Open with system default" })
+		vim.keymap.set("n", "gx", function()
+			require("oil").open_external()
+		end, { buffer = true, desc = "Oil: Open with system default" })
 
-    vim.keymap.set("n", "<C-p>", function()
-      require("oil").preview()
-    end, { buffer = true, desc = "Oil: Preview file" })
+		vim.keymap.set("n", "<C-p>", function()
+			require("oil").preview()
+		end, { buffer = true, desc = "Oil: Preview file" })
 
-    vim.keymap.set("n", "<C-c>", function()
-      require("oil").close()
-    end, { buffer = true, desc = "Oil: Close oil" })
+		vim.keymap.set("n", "<C-c>", function()
+			require("oil").close()
+		end, { buffer = true, desc = "Oil: Close oil" })
 
-    vim.keymap.set("n", "<C-l>", function()
-      require("oil").refresh()
-    end, { buffer = true, desc = "Oil: Refresh" })
+		vim.keymap.set("n", "<C-l>", function()
+			require("oil").refresh()
+		end, { buffer = true, desc = "Oil: Refresh" })
 
-    vim.keymap.set("n", "q", function()
-      require("oil").close()
-    end, { buffer = true, desc = "Oil: Quit oil" })
-  end,
+		vim.keymap.set("n", "q", function()
+			require("oil").close()
+		end, { buffer = true, desc = "Oil: Quit oil" })
+	end,
 })
+
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP rename symbol" })
