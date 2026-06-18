@@ -143,7 +143,7 @@ return {
 				install_dir = vim.fn.stdpath("data") .. "/site",
 			})
 
-			require("nvim-treesitter").install({ "lua", "vim", "vimdoc", "nix", "elixir", "eex", "heex" })
+			require("nvim-treesitter").install({ "lua", "vim", "vimdoc", "nix", "elixir", "eex", "heex", "rust" })
 
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = { "lua", "vim", "help", "nix", "elixir", "eelixir", "eex", "heex", "surface" },
