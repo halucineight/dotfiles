@@ -46,6 +46,9 @@ vim.keymap.set("n", "<leader>bb", "<cmd>BufferPick<cr>", { desc = "Pick buffer" 
 vim.keymap.set("n", "<leader>bc", "<cmd>BufferClose<cr>", { desc = "Close current buffer" })
 vim.keymap.set("n", "<leader>bn", "<cmd>BufferNext<cr>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", "<cmd>BufferPrevious<cr>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bo", "<cmd>BufferCloseAllButCurrent<cr>", {
+	desc = "Close all buffers but current",
+})
 vim.keymap.set("n", "L", "<cmd>BufferNext<cr>", { desc = "Next buffer" })
 vim.keymap.set("n", "H", "<cmd>BufferPrevious<cr>", { desc = "Previous buffer" })
 
