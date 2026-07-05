@@ -16,7 +16,7 @@ vlc = [
 
 [open]
 prepend_rules = [
-    { mime = "image/*", use = [ "eog", "reveal" ] },
+    { mime = "image/*", use = [ "gwenview", "reveal" ] },
     { mime = "video/*", use = [ "vlc", "reveal" ] }
 ]
 
