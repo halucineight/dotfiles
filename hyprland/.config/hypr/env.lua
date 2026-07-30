@@ -1,0 +1,5 @@
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("XCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "breeze_cursors")
+hl.env("HYPRCURSOR_THEME", "breeze_cursors")
