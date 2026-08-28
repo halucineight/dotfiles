@@ -248,6 +248,11 @@ return {
 				capabilities = capabilities,
 			})
 			vim.lsp.enable("rust_analyzer")
+
+			vim.lsp.config("jsonls", {
+				capabilities = capabilities,
+			})
+			vim.lsp.enable("jsonls")
 		end,
 	},
 }
